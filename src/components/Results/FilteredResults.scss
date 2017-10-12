@@ -1,45 +1,11 @@
 @import '../../_sassVars.scss';
 
-* {
-    box-sizing: border-box;
-}
-
 .main_section {
     position: relative;
     width: 100%;
     height: 200vh;
     background: $mainBackgroundColor;
     padding: 80px;
-    overflow-x: hidden;
-}
-
-.new_puzzles {
-    position: absolute;
-    right: 80px;
-    width: 60vw;
-    height:380px;
-    background: white;
-}
-
-.title {
-    position: relative;
-    width: 100%;
-    height: 80px;
-    background: $darkColor;
-    font-family: $secondaryFontFamily;
-    color: white;
-    font-size: 40px;
-    padding: 19px 50px;
-}
-
-.title {
-    a {
-    text-decoration: none;
-    color: white;
-    }
-    a:hover {
-        color: $mainColor;
-    }
 }
 
 .content {

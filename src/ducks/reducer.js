@@ -40,7 +40,7 @@ export function getPuzzles(category, value) {
     } else {
         puzzles = axios.get(`/api/results`)
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 return response.data
             })
     }
@@ -55,12 +55,27 @@ export function get3NewPuzzles() {
     var puzzles;
     puzzles = axios.get('/api/results/3new')
         .then(response => {
-            // console.log(response.data)
+            console.log(response.data)
             return response.data
         })
 
     return {
         type: GET_NEW_HOME_PUZZLES,
+        payload: puzzles
+    }
+}
+
+export function getNewPuzzles() {
+    console.log('hello please')
+    var puzzles;
+    puzzles = axios.get('/api/results/new')
+    .then(response => {
+        
+        return response.data
+    }).catch((err) => console.log(err))
+
+    return {
+        type: GET_NEW_PUZZLES,
         payload: puzzles
     }
 }
@@ -74,6 +89,9 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { filteredPuzzles: action.payload })
         case GET_NEW_HOME_PUZZLES + '_FULFILLED':
             return Object.assign({}, state, { newHomePuzzles: action.payload })
+        case GET_NEW_PUZZLES + '_FULFILLED':
+        console.log(action.payload)
+            return Object.assign({}, state, {allNewPuzzles: action.payload})
         default:
             return state;
     }

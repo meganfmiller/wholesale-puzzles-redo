@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './Home.css';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Header from './../Header/Header';
 import Nav from '../../components/Nav/Nav.js';
 
 import {connect} from 'react-redux';
-import {get3NewPuzzles} from './../../ducks/reducer';
+import {get3NewPuzzles, getNewPuzzles} from './../../ducks/reducer';
 
 class Home extends Component {
     constructor() {
@@ -29,7 +29,7 @@ class Home extends Component {
                 <div className='main_section'>
                     <div className="new_puzzles">
                         <div className="title">
-                            <div>NEW PUZZLES</div>
+                            <Link to='/newresults'>NEW PUZZLES</Link>
                         </div>
                         <div className="content">
                             {this.props.newHomePuzzles.map((item, i) => {
@@ -54,5 +54,5 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {get3NewPuzzles})(Home);
+export default connect(mapStateToProps, {get3NewPuzzles, getNewPuzzles})(Home);
 

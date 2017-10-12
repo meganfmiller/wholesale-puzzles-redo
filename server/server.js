@@ -102,23 +102,6 @@ app.get('/api/results/3new', (req, res) => {
         })
 })
 
-// app.get('/api/results/large', (req, res) => {
-//     app.get('db').getLargePuzzles()
-//     .then (response => {
-//         res.status(200).send(response)
-//     })
-// })
-
-// app.get('/api/results/pieces/:pieces', (req, res) => {
-//     app.get('db').getPuzzlesByPiece([req.params.pieces])
-//         .then(response => {
-//             // console.log('response', response)
-//             res.status(200).send(response)
-//         }).catch(err => {
-//             res.status(500).send(err)
-//         })
-// })
-
 app.get('/api/results', (req, res) => {
     if (req.query.pieces) {
         if (req.query.pieces === 'large') {

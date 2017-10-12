@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import {connect} from 'react-redux'
 import {getPuzzles} from './../../ducks/reducer';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
-import './Results.css';
+import './FilteredResults.css';
 
-class Results extends Component {
+class FilteredResults extends Component {
 
 
     render() {
         return (
-            <div className="Results">
+            <div className="FilteredResults">
                 <Header />
                 <Nav />
                 <div className='main_section'>
@@ -28,4 +28,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {getPuzzles})(Results);
+export default connect(mapStateToProps, {getPuzzles})(FilteredResults);

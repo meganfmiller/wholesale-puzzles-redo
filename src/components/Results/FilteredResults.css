@@ -1,39 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600,700");
-* {
-  box-sizing: border-box; }
-
 .main_section {
   position: relative;
   width: 100%;
   height: 200vh;
   background: #E4E5E6;
-  padding: 80px;
-  overflow-x: hidden; }
-
-.new_puzzles {
-  position: absolute;
-  right: 80px;
-  width: 60vw;
-  height: 380px;
-  background: white; }
-
-.title {
-  position: relative;
-  width: 100%;
-  height: 80px;
-  background: #646B69;
-  font-family: "Oswald", sans-serif;
-  color: white;
-  font-size: 40px;
-  padding: 19px 50px; }
-
-.title a {
-  text-decoration: none;
-  color: white; }
-
-.title a:hover {
-  color: #5EAC57; }
+  padding: 80px; }
 
 .content {
   position: relative;
