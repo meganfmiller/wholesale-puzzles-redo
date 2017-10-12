@@ -1,0 +1,2 @@
+insert into puzzle (name, brand, artist, theme, pieces, price, new, sale, img, large)
+values ('A Christmas Greeting', 'Buffalo Games', 'Charles Wysocki', 'Seasonal', '1000', 15.99, true, false, '', false)

@@ -1,0 +1,66 @@
+@import '../../_sassVars.scss';
+
+.header {
+    position: relative;
+    width: 100%;
+    // height: 58.5vh;
+    overflow: hidden;
+}
+
+.cart {
+    position: absolute;
+    z-index: 1;
+    width: 40px;
+    right: 115px;
+    top: 72px; 
+}
+
+.utilities {
+    position: relative;
+    top: 139px;
+    text-decoration: none;
+    font-family: $mainFontFamily;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 13px;
+    color: white;
+    width: 470px;
+    padding: 0 72px 0 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    float: right;
+}
+
+.utilities a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.utilities a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+// .dark_box {
+//     position: absolute;
+//     top: 0;
+//     background: #09160C;
+//     width: 100%;
+//     height: 83.5vh; 
+//     opacity: .6;
+// }
+
+.hero {
+    position: absolute;
+    width: 100%;
+    z-index: -1
+}
+
+.logo {
+    position: absolute;
+    top: 50px;
+    left: 72px;
+    z-index: 1;
+    width: 425px;
+}
