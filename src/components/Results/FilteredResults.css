@@ -25,6 +25,8 @@
   font-family: "Oswald", sans-serif;
   color: #646B69;
   margin: 0 0px 0 50px; }
+  .puzzle-container a {
+    text-decoration: none; }
 
 .name_style {
   font-family: "Source Sans Pro", sans-serif;

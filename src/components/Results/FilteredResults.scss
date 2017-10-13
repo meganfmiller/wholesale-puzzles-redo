@@ -28,6 +28,9 @@
     font-family: $secondaryFontFamily;
     color: $darkColor;
     margin: 0 0px 0 50px;
+    a {
+        text-decoration: none;
+    }
 }
 
 .name_style {

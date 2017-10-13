@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600,700");
+.main_section {
+  position: relative;
+  width: 100%;
+  height: 200vh;
+  background: #E4E5E6;
+  padding: 80px; }
+
+.white_container {
+  background: white; }
+
+.product_content {
+  position: relative;
+  height: 300px;
+  padding: 30px 0px; }
+
+.product_content img {
+  height: 167.33px; }
+
+.puzzle-container {
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Oswald", sans-serif;
+  color: #646B69;
+  margin: 0 0px 0 50px; }
+  .puzzle-container a {
+    text-decoration: none; }
+
+.name_style {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #5EAC57;
+  font-weight: 700; }
+
+.addtocart_btn {
+  background: #5EAC57;
+  color: white;
+  border-radius: 25px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  padding: 10px 20px;
+  box-shadow: 2px 2px 8px #646B69;
+  margin: 50px; }

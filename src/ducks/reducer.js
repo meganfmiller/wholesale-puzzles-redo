@@ -8,20 +8,24 @@ const initialState = {
     homeAccessories: [],
     allNewPuzzles: [],
     allSalePuzzles: [],
-    allAccessories: []
+    allAccessories: [],
+    product: [],
+    cart: []
 }
 
 const GET_USER_INFO = 'GET_USER_INFO';
 const GET_PUZZLES = 'GET_PUZZLES';
 const GET_NEW_HOME_PUZZLES = 'GET_NEW_HOME_PUZZLES';
 const GET_NEW_PUZZLES = 'GET_NEW_PUZZLES';
+const GET_PRODUCT = 'GET_PRODUCT';
+const ADD_TO_CART = 'ADD_TO_CART'
 
 
 
 export function getUserInfo() {
     const userData = axios.get('/auth/me')
-        .then(res => {
-            return res.data
+        .then(response => {
+            return response.data
         })
     return {
         type: GET_USER_INFO,
@@ -34,7 +38,7 @@ export function getPuzzles(category, value) {
     if (category && value) {
         puzzles = axios.get(`/api/results?${category}=${value}`)
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 return response.data
             })
     } else {
@@ -55,7 +59,7 @@ export function get3NewPuzzles() {
     var puzzles;
     puzzles = axios.get('/api/results/3new')
         .then(response => {
-            console.log(response.data)
+            // console.log(response.data)
             return response.data
         })
 
@@ -66,7 +70,7 @@ export function get3NewPuzzles() {
 }
 
 export function getNewPuzzles() {
-    console.log('hello please')
+    // console.log('hello please')
     var puzzles;
     puzzles = axios.get('/api/results/new')
     .then(response => {
@@ -80,6 +84,27 @@ export function getNewPuzzles() {
     }
 }
 
+export function getProduct(item) {
+    var puzzle;
+    puzzle = axios.get(`/api/results/${item}`)
+    .then(response => {
+        return response.data
+    })
+
+    return {
+        type: GET_PRODUCT,
+        payload: puzzle
+    }
+}
+
+export function addtoCart(product) {
+    console.log(product)
+    return {
+        type: ADD_TO_CART,
+        payload: product
+    }
+}
+
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -90,8 +115,12 @@ export default function reducer(state = initialState, action) {
         case GET_NEW_HOME_PUZZLES + '_FULFILLED':
             return Object.assign({}, state, { newHomePuzzles: action.payload })
         case GET_NEW_PUZZLES + '_FULFILLED':
-        console.log(action.payload)
+        // console.log(action.payload)
             return Object.assign({}, state, {allNewPuzzles: action.payload})
+        case GET_PRODUCT + '_FULFILLED':
+            return Object.assign({}, state, {product: action.payload})
+        case ADD_TO_CART:
+            return Object.assign({}, state, {cart: action.payload})
         default:
             return state;
     }

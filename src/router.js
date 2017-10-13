@@ -17,6 +17,6 @@ export default (
     <Route component={ Contact } path="/contact" />
     <Route component={ NewResults } path="/newresults" />
     <Route component={ FilteredResults } path="/results" />
-    {/* <Route component={ Product } path="/results/:item" /> */}
+    <Route component={ Product } path="/resultz/:item" />
   </Switch>
 )

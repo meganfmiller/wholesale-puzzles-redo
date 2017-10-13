@@ -62,7 +62,7 @@ app.get('/auth/me', (req, res) => {
     if (!req.user) {
         return res.status(404).send('User not found.')
     }
-    console.log(req.user)
+    // console.log(req.user)
     return res.status(200).send(req.user);
 })
 
@@ -78,7 +78,7 @@ passport.serializeUser(function (id, done) {
 passport.deserializeUser(function (id, done) {
     app.get('db').findCurrentUser([id])
         .then(user => {
-            console.log(user[0])
+            // console.log(user[0])
             done(null, user[0])
         })
 })
@@ -142,6 +142,13 @@ app.get('/api/results', (req, res) => {
     }
 })
 
+app.get('/api/results/:item', (req, res) => {
+    app.get('db').getProduct([req.params.item])
+    .then(response => {
+        // console.log(response)
+        res.status(200).send(response[0])
+    })
+})
 
 app.post('/api/payment', function (req, res, next) {
     //convert amount to pennies
