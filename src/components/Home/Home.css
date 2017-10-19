@@ -35,14 +35,66 @@
 .title a:hover {
   color: #5EAC57; }
 
-.content {
+.new_content {
   position: relative;
   height: 300px;
   padding: 30px 50px;
   display: flex; }
 
-.content img {
+.new_content img {
   height: 167.33px; }
+
+.sale_puzzles {
+  position: absolute;
+  top: 540px;
+  left: 80px;
+  width: 60vw;
+  height: 380px;
+  background: white; }
+
+.sale_content {
+  position: relative;
+  height: 300px;
+  padding: 30px 50px;
+  display: flex; }
+
+.sale_content img {
+  height: 167.33px; }
+
+.accessories {
+  position: absolute;
+  top: 540px;
+  right: 80px;
+  width: 23vw;
+  height: 380px;
+  background: white; }
+
+.accessory_content {
+  position: relative;
+  height: 300px;
+  padding: 30px 0px 30px 50px;
+  display: flex; }
+
+.accessory_content img {
+  height: 167.33px; }
+
+.acc_title {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background: #646B69;
+  font-family: "Oswald", sans-serif;
+  color: white;
+  font-size: 40px;
+  padding: 19px 0px;
+  text-align: center; }
+
+.acc_title a {
+  text-decoration: none;
+  color: white; }
+
+.acc_title a:hover {
+  color: #5EAC57; }
 
 .puzzle-container {
   width: 230px;

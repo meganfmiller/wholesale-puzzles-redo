@@ -102,6 +102,20 @@ app.get('/api/results/3new', (req, res) => {
         })
 })
 
+app.get('/api/results/3sale', (req, res) => {
+    app.get('db').get3SalePuzzles()
+        .then(response => {
+            res.status(200).send(response)
+        })
+})
+
+app.get('/api/results/1accessory', (req, res) => {
+    app.get('db').get1Accessory()
+        .then(response => {
+            res.status(200).send(response)
+        })
+})
+
 app.get('/api/results', (req, res) => {
     if (req.query.pieces) {
         if (req.query.pieces === 'large') {
