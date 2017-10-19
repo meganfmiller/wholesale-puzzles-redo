@@ -36,24 +36,15 @@ class Nav extends Component {
                         <div className='dropdown-content'>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'BUFFALO GAMES')}>BUFFALO GAMES</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'CEACO')}>CEACO</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'CHANNEL CRAFT')}>CHANNEL CRAFT</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'COBBLE HILL')}>COBBLE HILL</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'DOWDLE FOLK ART')}>DOWDLE FOLK ART</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'EUROGRAPHICS')}>EUROGRAPHICS</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'JET')}>JET</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'LAFAYETTE')}>LAFAYETTE</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'LANG')}>LANG</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'LUV-IT')}>LUV-IT</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'MASTERPIECES')}>MASTERPIECES</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'NEW YORK PUZZLE CO.')}>NEW YORK PUZZLE CO.</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'POMEGRANATE')}>POMEGRANATE</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'RAVENSBURGER')}>RAVENSBURGER</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'RE-MARKS')}>RE-MARKS</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'SPRINGBOK')}>SPRINGBOK</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'SUNSOUT')}>SUNSOUT</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'VERMONT CHRISTMAS CO.')}>VERMONT CHRISTMAS CO.</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'WHITE MOUNTAIN')}>WHITE MOUNTAIN</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('brand', 'WILLOW CREEK PRESS')}>WILLOW CREEK PRESS</Link>
                         </div>
                     </div>
                     <div className="dropdown">
@@ -64,7 +55,6 @@ class Nav extends Component {
                             <Link to='/results' onClick={() => this.props.getPuzzles('artist', 'Charles Wysocki')}>CHARLES WYSOCKI</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('artist', 'Eric Dowdle')}>ERIC DOWDLE</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('artist', 'Nicky Boehme')}>NICKY BOEHME</Link>
-                            <Link to='/results' onClick={() => this.props.getPuzzles('artist', 'Fine-Art Puzzles')}>FINE-ART PUZZLES</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('artist', 'Hometown')}>HOMETOWN</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('artist', 'Jane Wooster Scott')}>JANE WOOSTER SCOTT</Link>
                             <Link to='/results' onClick={() => this.props.getPuzzles('artist', 'Norman Rockwell')}>NORMAN ROCKWELL</Link>

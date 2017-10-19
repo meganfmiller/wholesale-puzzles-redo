@@ -34,7 +34,7 @@ export default class NewCart extends Component {
             <StripeCheckout
               token={this.onToken}
               stripeKey='pk_test_gel2AzWEIutWSftyfAb0xCa3'
-              amount={1000}
+              amount={2000}
             />
           
          </div>

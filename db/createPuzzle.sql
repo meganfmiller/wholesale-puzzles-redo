@@ -1,2 +1,2 @@
-insert into puzzle (name, brand, artist, theme, pieces, price, new, sale, img, large)
-values ('A Christmas Greeting', 'Buffalo Games', 'Charles Wysocki', 'Seasonal', '1000', 15.99, true, false, '', false)
+insert into puzzle (name, brand, artist, theme, pieces, price, new, sale, img, large, accessory)
+values ('HUSTLE BUSTLE', 'CEACO', 'Jane Wooster Scott', 'Scenery', '300', 11.99, true, false, 'https://photos-3.dropbox.com/t/2/AAD0NVhECWQJvNUJvVfRPeWxpjsRie8476-kzIIcb8h5Zw/12/30689692/jpeg/32x32/1/_/1/2/alice_in_wonderland.jpg/EJH0mBcYpQQgBygH/AaP1OJWpTmG_j7Se4ZxZhFJFGa3rZYHz2psUaJ0zC9Y?size=2048x1536&size_mode=3', true, false)

@@ -16,7 +16,7 @@ class FilteredResults extends Component {
                 <Header />
                 <Nav />
                 <div className='main_section'>
-                    <div className="content">
+                    <div className="results_content">
                         {this.props.filteredPuzzles.map((item, i) => {
                             return <div key={i} className='puzzle-container'>
                                 <Link to={'/resultz/' + item.id}><div><img src={item.img} alt='' /></div></Link>

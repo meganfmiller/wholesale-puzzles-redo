@@ -13,20 +13,18 @@
 .product_content {
   position: relative;
   height: 300px;
-  padding: 30px 0px; }
+  padding: 30px 50px; }
 
 .product_content img {
   height: 167.33px; }
 
 .puzzle-container {
-  width: 200px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: "Oswald", sans-serif;
-  color: #646B69;
-  margin: 0 0px 0 50px; }
+  color: #646B69; }
   .puzzle-container a {
     text-decoration: none; }
 

@@ -1,3 +1,4 @@
 select * from puzzle
 where new = true
-limit 3;
+ORDER BY RANDOM()
+LIMIT 3;
