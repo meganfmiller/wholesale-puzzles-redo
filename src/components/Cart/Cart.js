@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import './Cart.css';
 import NewCart from './NewCart.js'
+import Footer from '../Footer/Footer';
 
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
@@ -42,6 +43,7 @@ class Cart extends Component {
         <Header />
         <Nav />
         <NewCart cartData={this.props.cart}/>
+        <Footer/>
       </div>
     );
   }

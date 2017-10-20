@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600,700");
+.Footer {
+  position: relative;
+  background: #E4E5E6;
+  padding: 80px; }
+
+.line {
+  position: absolute;
+  right: 80px;
+  left: 80px;
+  background: #5EAC57;
+  height: 1px; }
+
+.footer_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px; }
+
+.logo_box {
+  width: 250px; }
+  .logo_box img {
+    width: 280px; }
+
+.cr_box {
+  width: 375px; }
+
+.copyright {
+  color: #5EAC57;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 15px; }
+
+.icons {
+  width: 250px;
+  display: flex;
+  justify-content: space-between; }
+  .icons img {
+    height: 80px;
+    width: 80px; }
+
+.bottom_line {
+  position: absolute;
+  bottom: 0;
+  background: #5EAC57;
+  height: 25px;
+  left: 0;
+  right: 0;
+  z-index: 15; }

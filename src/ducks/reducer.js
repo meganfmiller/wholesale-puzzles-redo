@@ -18,6 +18,7 @@ const GET_PUZZLES = 'GET_PUZZLES';
 const GET_NEW_HOME_PUZZLES = 'GET_NEW_HOME_PUZZLES';
 const GET_NEW_PUZZLES = 'GET_NEW_PUZZLES';
 const GET_SALE_HOME_PUZZLES = 'GET_SALE_HOME_PUZZLES';
+const GET_SALE_PUZZLES = 'GET_SALE_PUZZLES';
 const GET_HOME_ACCESSORY = 'GET_HOME_ACCESSORY';
 const GET_PRODUCT = 'GET_PRODUCT';
 const ADD_TO_CART = 'ADD_TO_CART';
@@ -98,6 +99,18 @@ export function get3SalePuzzles() {
     }
 }
 
+export function getSalePuzzles() {
+    var puzzles;
+    puzzles = axios.get('/api/results/sale')
+    .then(response => {
+        return response.data
+    })
+    return {
+        type: GET_SALE_PUZZLES,
+        payload: puzzles
+    }
+}
+
 export function get1Accessory() {
     var accessory;
     accessory = axios.get('/api/results/1accessory')
@@ -145,6 +158,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {allNewPuzzles: action.payload})
         case GET_SALE_HOME_PUZZLES + '_FULFILLED':
             return Object.assign({}, state, {saleHomePuzzles: action.payload})
+        case GET_SALE_PUZZLES + '_FULFILLED':
+            return Object.assign({}, state, {allSalePuzzles: action.payload})
         case GET_HOME_ACCESSORY + '_FULFILLED':
             return Object.assign({}, state, {homeAccessory: action.payload})
         case GET_PRODUCT + '_FULFILLED':

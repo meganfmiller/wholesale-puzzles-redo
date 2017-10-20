@@ -8,6 +8,7 @@ import Contact from './components/Contact/Contact';
 import Product from './components/Product/Product';
 import FilteredResults from './components/Results/FilteredResults';
 import NewResults from './components/Results/NewResults';
+import SaleResults from './components/Results/SaleResults';
 
 export default (
     <Switch>
@@ -16,6 +17,7 @@ export default (
     <Route component={ Cart } path="/cart" />
     <Route component={ Contact } path="/contact" />
     <Route component={ NewResults } path="/newresults" />
+    <Route component={ SaleResults } path="/saleresults" />
     <Route component={ FilteredResults } path="/results" />
     <Route component={ Product } path="/resultz/:item" />
   </Switch>

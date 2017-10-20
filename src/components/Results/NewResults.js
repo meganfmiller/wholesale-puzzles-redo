@@ -5,23 +5,24 @@ import { Link } from 'react-router-dom';
 import { getNewPuzzles } from './../../ducks/reducer';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 import './FilteredResults.css';
 
 class NewResults extends Component {
 
 
     componentDidMount() {
-        console.log('cdm')
+        // console.log('cdm')
         this.props.getNewPuzzles();
     }
 
     render() {
-        console.log(this.props.allNewPuzzles)
+        // console.log(this.props.allNewPuzzles)
         return (
             <div className="NewResults">
                 <Header />
                 <Nav />
-                <div className='main_section'>
+                <div className='r_main_section'>
                     <div className="results_content">
                         {this.props.allNewPuzzles.map((item, i) => {
                             return <div key={i} className='puzzle-container'>
@@ -33,6 +34,7 @@ class NewResults extends Component {
                         })}
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }

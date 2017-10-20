@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getProduct, addtoCart } from './../../ducks/reducer';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 import './Product.css';
 
 class Product extends Component {
@@ -38,7 +39,7 @@ class Product extends Component {
             <div className="Product">
                 <Header />
                 <Nav />
-                <div className='main_section'>
+                <div className='p_main_section'>
                     <div className='white_container'>
                         <div className="product_content">
                             <div className='puzzle-container'>
@@ -51,6 +52,7 @@ class Product extends Component {
                         <button className='addtocart_btn' onClick={() => this.props.addtoCart(this.props.product)}>ADD TO CART</button>
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }

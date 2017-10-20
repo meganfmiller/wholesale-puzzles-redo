@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-import { getPuzzles } from './../../ducks/reducer';
+import { Link } from 'react-router-dom';
+import { getSalePuzzles } from './../../ducks/reducer';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import './FilteredResults.css';
 
-class FilteredResults extends Component {
+class SaleResults extends Component {
 
+
+    componentDidMount() {
+        // console.log('cdm')
+        this.props.getSalePuzzles();
+    }
 
     render() {
+        // console.log(this.props.allNewPuzzles)
         return (
-            <div className="FilteredResults">
+            <div className="SaleResults">
                 <Header />
                 <Nav />
                 <div className='r_main_section'>
                     <div className="results_content">
-                        {this.props.filteredPuzzles.map((item, i) => {
+                        {this.props.allSalePuzzles.map((item, i) => {
                             return <div key={i} className='puzzle-container'>
                                 <Link to={'/resultz/' + item.id}><div><img src={item.img} alt='' /></div></Link>
                                 <div>{item.brand} - {item.pieces} PC</div>
@@ -35,9 +41,11 @@ class FilteredResults extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
-        filteredPuzzles: state.filteredPuzzles
+
+        allSalePuzzles: state.allSalePuzzles
     }
 }
 
-export default connect(mapStateToProps, { getPuzzles })(FilteredResults);
+export default connect(mapStateToProps, {getSalePuzzles})(SaleResults);

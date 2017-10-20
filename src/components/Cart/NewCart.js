@@ -19,7 +19,7 @@ export default class NewCart extends Component {
       }
   render(){
       return(
-        <div className='main_section'>          
+        <div className='cart_main_section'>          
           <div className='white_container'>
           <div>CART</div>
             <div className="product_content">
@@ -30,12 +30,13 @@ export default class NewCart extends Component {
                 <div>${this.props.cartData.price}</div>
               </div>
             </div>
-            </div>
             <StripeCheckout
               token={this.onToken}
               stripeKey='pk_test_gel2AzWEIutWSftyfAb0xCa3'
               amount={2000}
             />
+            </div>
+            
           
          </div>
       )

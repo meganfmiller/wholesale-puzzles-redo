@@ -1,0 +1,63 @@
+@import '../../_sassVars.scss';
+
+.Footer {
+    position: relative;
+    background: $mainBackgroundColor;
+    padding: 80px;
+}
+
+.line {
+    position: absolute;
+    right: 80px;
+    left: 80px;
+    background: $mainColor;
+    height: 1px;
+}
+
+.footer_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+} 
+
+.logo_box {
+    width: 250px;
+    img {
+        width: 280px;        
+    }
+}
+
+.cr_box {
+    width: 375px;
+}
+
+.copyright {
+    color: $mainColor;
+    font-family: $mainFontFamily;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.icons {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    img {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+.bottom_line {
+    position: absolute;
+    bottom: 0;
+    background: $mainColor;
+    height: 25px;
+    left: 0;
+    right: 0;
+    z-index: 15;
+}

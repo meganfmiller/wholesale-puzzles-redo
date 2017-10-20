@@ -4,6 +4,7 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import Header from './../Header/Header';
 import Nav from '../../components/Nav/Nav.js';
+import Footer from '../../components/Footer/Footer';
 
 import { connect } from 'react-redux';
 import { get3NewPuzzles, get3SalePuzzles, get1Accessory } from './../../ducks/reducer';
@@ -39,7 +40,7 @@ class Home extends Component {
                     </div>
                     <div className='sale_puzzles'>
                         <div className='title'>
-                            SALE PUZZLES
+                            <Link to='/saleresults'>SALE PUZZLES</Link>
                         </div>
                         <div className="sale_content">
                             {this.props.saleHomePuzzles.map((item, i) => {
@@ -58,7 +59,7 @@ class Home extends Component {
                         </div>
                         <div className="accessory_content">
                             {this.props.homeAccessory.map((item, i) => {
-                                return <div key={i} className='puzzle-container'>
+                                return <div key={i} className='accessory-container'>
                                     <Link to={'/resultz/' + item.id}><div><img src={item.img} alt='' /></div></Link>
                                     <div>{item.brand}</div>
                                     <Link to={'/resultz/' + item.id}><div className='name_style'>{item.name}</div></Link>
@@ -67,7 +68,23 @@ class Home extends Component {
                             })}
                         </div>
                     </div>
+                    <div className='gallery'>
+                        <div className='title'>
+                            GALLERY
+                        </div>
+                        <div className="gallery_content">
+                            {/* {this.props.homeAccessory.map((item, i) => {
+                                return <div key={i} className='accessory-container'>
+                                    <Link to={'/resultz/' + item.id}><div><img src={item.img} alt='' /></div></Link>
+                                    <div>{item.brand}</div>
+                                    <Link to={'/resultz/' + item.id}><div className='name_style'>{item.name}</div></Link>
+                                    <div>${item.price}</div>
+                                </div>
+                            })} */}
+                        </div>
+                    </div>
                 </div>
+                <Footer/>
             </div>
         );
     }

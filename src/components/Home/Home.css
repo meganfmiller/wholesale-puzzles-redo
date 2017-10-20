@@ -6,10 +6,9 @@
 .main_section {
   position: relative;
   width: 100%;
-  height: 200vh;
+  height: 221vh;
   background: #E4E5E6;
-  padding: 80px;
-  overflow-x: hidden; }
+  padding: 80px; }
 
 .new_puzzles {
   position: absolute;
@@ -39,7 +38,9 @@
   position: relative;
   height: 300px;
   padding: 30px 50px;
-  display: flex; }
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll; }
 
 .new_content img {
   height: 167.33px; }
@@ -56,7 +57,9 @@
   position: relative;
   height: 300px;
   padding: 30px 50px;
-  display: flex; }
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll; }
 
 .sale_content img {
   height: 167.33px; }
@@ -73,7 +76,9 @@
   position: relative;
   height: 300px;
   padding: 30px 0px 30px 50px;
-  display: flex; }
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll; }
 
 .accessory_content img {
   height: 167.33px; }
@@ -97,15 +102,40 @@
   color: #5EAC57; }
 
 .puzzle-container {
-  width: 230px;
+  white-space: nowrap;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: "Oswald", sans-serif;
   color: #646B69; }
+  .puzzle-container a {
+    text-decoration: none; }
+
+.accessory-container {
+  width: 247px;
+  white-space: nowrap;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Oswald", sans-serif;
+  color: #646B69; }
+  .accessory-container a {
+    text-decoration: none; }
+
+.gallery {
+  position: absolute;
+  top: 1000px;
+  left: 80px;
+  right: 80px;
+  height: 500px;
+  background: white;
+  margin: 0 0 80px 0; }
 
 .name_style {
   font-family: "Source Sans Pro", sans-serif;
   color: #5EAC57;
   font-weight: 700; }
+  .name_style a {
+    text-decoration: none; }
