@@ -4,6 +4,7 @@ import './Header.css';
 import logo from '../../images/logo.png';
 import cart from '../../images/cart.png';
 import { Link } from 'react-router-dom';
+import {connect } from 'react-redux';
 
 class Header extends Component {
     render() {
@@ -26,6 +27,7 @@ class Header extends Component {
             <div className="header" style={style}>
                 <Link to='/'><img className="logo" src={logo} alt="logo" /></Link>
                 <Link to='/cart'><img className="cart" src={cart} alt='cart' /></Link>
+                <div className='cart_counter'>( {this.props.cart.length} )</div>                
                 <div className="utilities">
                     {<a href={process.env.REACT_APP_LOGIN}><div>LOG IN / SIGN UP</div></a>}
                     <Link to='/about'><div>ABOUT</div></Link>
@@ -39,5 +41,11 @@ class Header extends Component {
     }
 }
 
-export default Header;
+function mapStateToProps(state) {
+    return {
+        cart: state.cart
+    }
+}
+
+export default connect(mapStateToProps)(Header);
 

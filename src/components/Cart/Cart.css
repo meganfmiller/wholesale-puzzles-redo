@@ -4,4 +4,40 @@
   position: relative;
   width: 100%;
   background: #E4E5E6;
-  padding: 80px; }
+  padding: 80px;
+  display: flex;
+  flex-direction: column; }
+
+.cart_container {
+  position: relative;
+  width: 100%;
+  background: white;
+  margin-bottom: 20px; }
+
+.cart_content {
+  position: relative;
+  padding: 30px 50px;
+  display: flex;
+  flex-wrap: wrap; }
+
+.cart_content img {
+  height: 167.33px; }
+
+.checkout_container {
+  position: relative;
+  width: 100%;
+  height: 100px; }
+
+.checkout {
+  position: absolute;
+  right: 0px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.total {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #646B69; }

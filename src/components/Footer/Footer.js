@@ -12,16 +12,16 @@ class Footer extends Component {
                 <div className='line'></div>
                 <div className='footer_content'>
                     <div className='logo_box'>
-                        <img src={black_logo} />
+                        <img src={black_logo} alt=''/>
                     </div>
                     <div>
                         <div className='copyright'>TERMS OF USE | PRIVACY POLICY</div>
                         <div className='copyright'>© 2017 WHOLESALE PUZZLES | ALL RIGHTS RESERVED</div>
                     </div>
                     <div className='icons'>
-                        <img src={facebook} />
-                        <img src={twitter} />
-                        <img src={instagram} />
+                        <img src={facebook} alt=''/>
+                        <img src={twitter} alt=''/>
+                        <img src={instagram} alt=''/>
                     </div>
                 </div>
                 <div className='bottom_line'></div>

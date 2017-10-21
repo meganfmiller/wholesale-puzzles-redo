@@ -7,11 +7,19 @@
     overflow: hidden;
 }
 
+.cart_counter {
+    position: absolute;
+    color: white;
+    top: 86px;
+    right: 95px;
+    font-family: $mainFontFamily;
+}
+
 .cart {
     position: absolute;
     z-index: 1;
     width: 40px;
-    right: 115px;
+    right: 125px;
     top: 72px; 
 }
 

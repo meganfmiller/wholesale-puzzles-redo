@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600,700");
 .Nav {
   position: sticky;
-  top: 0px;
+  top: -2px;
   z-index: 1; }
 
 .navbar {
