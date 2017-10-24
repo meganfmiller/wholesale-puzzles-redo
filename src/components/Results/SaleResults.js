@@ -24,12 +24,13 @@ class SaleResults extends Component {
                 <Nav />
                 <div className='r_main_section'>
                     <div className="results_content">
+                    <div className='new_title'>SALE PUZZLES</div>
                         {this.props.allSalePuzzles.map((item, i) => {
                             return <div key={i} className='puzzle-container'>
                                 <Link to={'/resultz/' + item.id}><div><img src={item.img} alt='' /></div></Link>
                                 <div>{item.brand} - {item.pieces} PC</div>
                                 <Link to={'/resultz/' + item.id}><div className='name_style'>{item.name}</div></Link>
-                                <div>${item.price}</div>
+                                <div className='price_box'><div className='op'>${item.original_price}</div>${item.price}</div>
                             </div>
                         })}
                     </div>

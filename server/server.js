@@ -62,7 +62,7 @@ app.get('/auth/me', (req, res) => {
     if (!req.user) {
         return res.status(404).send('User not found.')
     }
-    // console.log(req.user)
+    console.log(req.user)
     return res.status(200).send(req.user);
 })
 
@@ -111,6 +111,13 @@ app.get('/api/results/sale', (req, res) => {
 
 app.get('/api/results/3sale', (req, res) => {
     app.get('db').get3SalePuzzles()
+        .then(response => {
+            res.status(200).send(response)
+        })
+})
+
+app.get('/api/results/accessories', (req, res) => {
+    app.get('db').getAccessories()
         .then(response => {
             res.status(200).send(response)
         })

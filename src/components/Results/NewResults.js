@@ -24,6 +24,7 @@ class NewResults extends Component {
                 <Nav />
                 <div className='r_main_section'>
                     <div className="results_content">
+                        <div className='new_title'>NEW PUZZLES</div>
                         {this.props.allNewPuzzles.map((item, i) => {
                             return <div key={i} className='puzzle-container'>
                                 <Link to={'/resultz/' + item.id}><div><img src={item.img} alt='' /></div></Link>

@@ -11,29 +11,83 @@
 
 .product_content {
   position: relative;
-  height: 300px;
   padding: 30px 50px; }
 
-.product_content img {
-  height: 167.33px; }
-
-.puzzle-container {
+.product_puzzle-container {
   white-space: nowrap;
-  height: 100%;
+  display: flex;
+  flex-direction: row;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #646B69;
+  margin: 72px 60px; }
+  .product_puzzle-container a {
+    text-decoration: none; }
+  .product_puzzle-container img {
+    width: 500px; }
+
+.product_info {
+  display: flex;
+  flex-direction: column; }
+
+.product_info_top {
+  margin-left: 72px;
+  height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  font-family: "Oswald", sans-serif;
-  color: #646B69; }
-  .puzzle-container a {
+  justify-content: space-between; }
+
+.product_info_bottom {
+  margin-left: 72px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column; }
+
+.bold {
+  font-weight: 700;
+  line-height: 30px; }
+
+.product_name_style {
+  color: #5EAC57;
+  font-size: 30px;
+  font-weight: 700; }
+  .product_name_style a {
     text-decoration: none; }
 
-.name_style {
-  font-family: "Source Sans Pro", sans-serif;
-  color: #5EAC57;
-  font-weight: 700; }
-  .name_style a {
-    text-decoration: none; }
+.product_brand_style {
+  font-family: "Oswald", sans-serif;
+  font-size: 18px; }
+
+.product_price_style {
+  font-family: "Oswald", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: -5px 0 15px 0; }
+
+.description {
+  margin-top: 40px;
+  width: 100%;
+  word-break: normal;
+  white-space: normal;
+  line-height: 24px;
+  border-bottom: 1px solid #5EAC57;
+  padding-bottom: 50px; }
+
+.quantity_container {
+  margin-top: 50px; }
+
+.quantity {
+  width: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px; }
+  .quantity button {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #646B69;
+    border-radius: 6px;
+    background: white;
+    color: #646B69; }
 
 .addtocart_btn {
   background: #5EAC57;
@@ -46,4 +100,5 @@
   border: none;
   padding: 10px 20px;
   box-shadow: 2px 2px 8px #646B69;
-  margin: 50px; }
+  margin-top: 40px;
+  width: 150px; }

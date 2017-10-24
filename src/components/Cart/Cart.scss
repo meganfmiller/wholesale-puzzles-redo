@@ -1,5 +1,14 @@
 @import '../../_sassVars.scss';
 
+.empty_cart {
+    background: $mainBackgroundColor;
+    font-family: $mainFontFamily;
+    font-size: 20px;
+    text-align: center;
+    height: 150px;
+    padding-top: 72px;
+}
+
 .cart_main_section {
     position: relative;
     width: 100%;
@@ -27,8 +36,87 @@
 }
 
 .cart_content img {
-    height: 167.33px;
+    height: 100px;
     // max-width: 200px;
+}
+
+.category_headers {
+    position: relative;
+    width: 100%;
+    font-family: $mainFontFamily;
+    font-weight: 700;
+    color: $mainColor;
+    display: flex;
+    // justify-content: space-between;
+}
+
+.cart_line {
+    position: absolute;
+    top: 55px;
+    background: $mainColor;
+    height: 1px;
+    width: 92%;
+}
+
+.c_puzzle-container {
+    // width: 240px;
+    white-space: nowrap;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    align-items: center;
+    font-family: $secondaryFontFamily;
+    color: $darkColor;
+    a {
+        text-decoration: none;
+    }
+    // margin: 0 0px 0 50px;
+}
+
+.image_pos {
+    width: 150px;
+    // width: 20%;
+    margin-right: 70px;
+}
+
+.name_pos {
+    width: 250px;
+    // width: 30%;
+    margin-right: 50px;
+}
+
+.pieces_pos {
+    width: 50px;
+    // width: 10%;
+    margin-right: 70px;
+}
+
+.brand_pos {
+    width: 100px;
+    // width: 20%;
+    margin-right: 100px;
+}
+
+.quantity_pos {
+    width: 100px;
+    margin-right: 50px;
+}
+
+.price_pos {
+    width: 70px;
+    // width: 10%;
+    margin-right: 30px;
+}
+
+.remove_pos {
+    width: 70px;
+    // width: 10%;
+}
+
+.trashcan {
+    width: 30px;
 }
 
 .checkout_container {
@@ -36,6 +124,7 @@
     // bottom: 0;
     width: 100%;
     height: 100px;
+    margin-top: 20px;
 }
 
 .checkout {
@@ -48,8 +137,125 @@
 }
 
 .total {
-    font-family: $mainFontFamily;
+    font-family: $secondaryFontFamily;
     font-size: 30px;
     font-weight: 700;
     color: $darkColor;
+}
+
+// .FixedCart {
+//     position: sticky;
+//     bottom: 1000px;
+// }
+
+.fixed_cart {
+    position: fixed;
+    bottom: 72px;
+    right: -25px;
+    width: 500px;
+    height: 300px;
+    overflow: scroll;
+    // background: white;
+    background: linear-gradient(to right, #D1EBD0 0%, white 75%);
+    padding: 30px 30px 30px 20px;
+    border: 5px double $darkColor;
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.fixed_container {
+    display: flex;
+}
+
+.hide {
+    position: fixed;
+    bottom: 72px;
+    right: -425px;
+    width: 500px;
+    height: 130px;
+    overflow: hidden;
+    background: $darkColor;
+    padding: 30px 30px 30px 20px;
+    border: 5px double white;
+    border-radius: 15px;
+    z-index: 100px;
+    display: flex;
+    opacity: .6;   
+    transition: .5s; 
+}
+
+.hide:hover {
+    opacity: 1;
+}
+
+.fixed_title {
+    font-family: $secondaryFontFamily;
+    color: $darkColor;
+    font-size: 30px;
+    // margin-bottom: 20px;
+    transform: rotate(-90deg);
+    transform-origin: 0 0%;
+    position: relative;
+    top: 60px;
+}
+
+.title_hide {
+    font-family: $secondaryFontFamily;
+    color: white;
+    font-size: 30px;
+    // margin-bottom: 20px;
+    transform: rotate(-90deg);
+    transform-origin: 0 0%;
+    position: relative;
+    top: 60px;
+}
+
+.half_hide {
+    display: none;
+}
+
+.fixed-puzzle-container {
+    // width: 240px;
+    white-space: nowrap;
+    // height: 100%;
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    font-family: $secondaryFontFamily;
+    color: $darkColor;
+    a {
+        text-decoration: none;
+    }
+    img {
+        width: 100px;
+    }
+    margin-bottom: 20px;
+}
+
+.fixed_info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    line-height: 23px;
+}
+
+.viewcart_btn {
+    background: $mainColor;
+    border-radius: 25px;
+    font-family: $mainFontFamily;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: 2px solid $mainColor;
+    padding: 11px 22px;
+    box-shadow: 2px 2px 8px $darkColor;
+    margin-top: 15px;
+    width: 125px;
+    height: 40px;
+    position: relative;
+    left: 55px;
+    a {
+        color: white;
+        text-decoration: none;
+    }
 }

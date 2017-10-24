@@ -3,20 +3,33 @@
 .header {
   position: relative;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  background-image: url("https://i.imgur.com/ciAXsvn.jpg");
+  background-size: cover;
+  background-position: center top;
+  z-index: 1; }
+
+.user {
+  position: absolute;
+  top: 88px;
+  right: 200px;
+  color: #5EAC57;
+  font-family: "Source Sans Pro", sans-serif;
+  letter-spacing: 2px;
+  text-align: left; }
 
 .cart_counter {
   position: absolute;
   color: white;
   top: 86px;
-  right: 95px;
+  right: 81px;
   font-family: "Source Sans Pro", sans-serif; }
 
 .cart {
   position: absolute;
   z-index: 1;
   width: 40px;
-  right: 125px;
+  right: 110px;
   top: 72px; }
 
 .utilities {
@@ -29,10 +42,10 @@
   font-size: 13px;
   color: white;
   width: 470px;
-  padding: 0 72px 0 0;
+  padding: 0 80px 0 0;
   z-index: 1;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   float: right; }
 
 .utilities a:link {
@@ -43,14 +56,33 @@
   color: white;
   text-decoration: none; }
 
-.hero {
-  position: absolute;
-  width: 100%;
-  z-index: -1; }
+.logout {
+  position: relative;
+  top: 139px;
+  text-decoration: none;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-size: 13px;
+  color: white;
+  width: 400px;
+  padding: 0 80px 0 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  float: right; }
+
+.logout a:link {
+  color: white;
+  text-decoration: none; }
+
+.logout a:visited {
+  color: white;
+  text-decoration: none; }
 
 .logo {
   position: absolute;
   top: 50px;
   left: 72px;
   z-index: 1;
-  width: 425px; }
+  width: 30%; }

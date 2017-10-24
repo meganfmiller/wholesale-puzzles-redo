@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Header from './../Header/Header';
 import Nav from '../../components/Nav/Nav.js';
 import Footer from '../../components/Footer/Footer';
+import FixedCart from '../Cart/FixedCart';
 
 import { connect } from 'react-redux';
 import { get3NewPuzzles, get3SalePuzzles, get1Accessory } from './../../ducks/reducer';
@@ -48,14 +49,14 @@ class Home extends Component {
                                     <Link to={'/resultz/' + item.id}><div><img src={item.img} alt='' /></div></Link>
                                     <div>{item.brand} - {item.pieces} PC</div>
                                     <Link to={'/resultz/' + item.id}><div className='name_style'>{item.name}</div></Link>
-                                    <div>${item.price}</div>
+                                    <div className='price_box'><div className='op'>${item.original_price}</div>${item.price}</div>
                                 </div>
                             })}
                         </div>
                     </div>
                     <div className='accessories'>
                         <div className='acc_title'>
-                            ACCESSORIES
+                            <Link to='/accessoryresults'>ACCESSORIES</Link>
                         </div>
                         <div className="accessory_content">
                             {this.props.homeAccessory.map((item, i) => {
@@ -84,7 +85,8 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer/>
+                <Footer />
+                <FixedCart/>
             </div>
         );
     }

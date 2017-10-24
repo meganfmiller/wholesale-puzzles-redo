@@ -20,14 +20,18 @@ const GET_NEW_PUZZLES = 'GET_NEW_PUZZLES';
 const GET_SALE_HOME_PUZZLES = 'GET_SALE_HOME_PUZZLES';
 const GET_SALE_PUZZLES = 'GET_SALE_PUZZLES';
 const GET_HOME_ACCESSORY = 'GET_HOME_ACCESSORY';
+const GET_ACCESSORIES = 'GET_ACCESSORIES';
 const GET_PRODUCT = 'GET_PRODUCT';
 const ADD_TO_CART = 'ADD_TO_CART';
+const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
 
 
 export function getUserInfo() {
+    console.log('sup dude')
     const userData = axios.get('/auth/me')
         .then(response => {
+            console.log(response.data)
             return response.data
         })
     return {
@@ -123,6 +127,18 @@ export function get1Accessory() {
     }
 }
 
+export function getAccessories() {
+    var accessories;
+    accessories = axios.get('/api/results/accessories')
+        .then(response => {
+            return response.data
+        })
+    return {
+        type: GET_ACCESSORIES,
+        payload: accessories
+    }
+}
+
 export function getProduct(item) {
     var puzzle;
     puzzle = axios.get(`/api/results/${item}`)
@@ -144,10 +160,18 @@ export function addtoCart(product) {
     }
 }
 
+export function removeFromCart(product) {
+    return {
+        type: REMOVE_FROM_CART,
+        payload: product
+    }
+}
+
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_USER_INFO + '_FULFILLED':
+        console.log(action.payload)
             return Object.assign({}, state, { user: action.payload })
         case GET_PUZZLES + '_FULFILLED':
             return Object.assign({}, state, { filteredPuzzles: action.payload })
@@ -162,12 +186,18 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { allSalePuzzles: action.payload })
         case GET_HOME_ACCESSORY + '_FULFILLED':
             return Object.assign({}, state, { homeAccessory: action.payload })
+        case GET_ACCESSORIES + '_FULFILLED':
+            return Object.assign({}, state, {allAccessories: action.payload})
         case GET_PRODUCT + '_FULFILLED':
             return Object.assign({}, state, { product: action.payload })
         case ADD_TO_CART:
-            const newCart = state.cart.slice();
+            var newCart = state.cart.slice();
             newCart.push(action.payload);
             return Object.assign({}, state, { cart: newCart });
+        case REMOVE_FROM_CART:
+            newCart = state.cart.slice();
+            newCart.splice(action.payload, 1);
+            return Object.assign({}, state, {cart: newCart});
         default:
             return state;
     }
