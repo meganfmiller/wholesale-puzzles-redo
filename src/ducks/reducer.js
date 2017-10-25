@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const initialState = {
     user: {},
+    filterOpen: false,
     filteredPuzzles: [],
     newHomePuzzles: [],
     saleHomePuzzles: [],
@@ -14,6 +15,7 @@ const initialState = {
 }
 
 const GET_USER_INFO = 'GET_USER_INFO';
+const SLIDE = 'SLIDE'
 const GET_PUZZLES = 'GET_PUZZLES';
 const GET_NEW_HOME_PUZZLES = 'GET_NEW_HOME_PUZZLES';
 const GET_NEW_PUZZLES = 'GET_NEW_PUZZLES';
@@ -28,7 +30,7 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
 
 export function getUserInfo() {
-    console.log('sup dude')
+    // console.log('sup dude')
     const userData = axios.get('/auth/me')
         .then(response => {
             console.log(response.data)
@@ -37,6 +39,13 @@ export function getUserInfo() {
     return {
         type: GET_USER_INFO,
         payload: userData
+    }
+}
+
+export function slide(flag) {    
+    return {
+        type: SLIDE,
+        payload: !flag
     }
 }
 
@@ -173,6 +182,8 @@ export default function reducer(state = initialState, action) {
         case GET_USER_INFO + '_FULFILLED':
         console.log(action.payload)
             return Object.assign({}, state, { user: action.payload })
+        case SLIDE:
+            return Object.assign({}, state, {filterOpen: action.payload})
         case GET_PUZZLES + '_FULFILLED':
             return Object.assign({}, state, { filteredPuzzles: action.payload })
         case GET_NEW_HOME_PUZZLES + '_FULFILLED':

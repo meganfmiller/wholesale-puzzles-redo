@@ -28,7 +28,7 @@ class FixedCart extends Component {
         return (
 
             <div className='FixedCart'>
-                <div className={this.state.cartOpen ? 'fixed_cart' : 'hide'} onClick={this.slide}>
+                <div className={this.state.cartOpen ? 'fixed_cart' : 'cart_hide'} onClick={this.slide}>
                     <div className='fixed_container'>
                         <div className={this.state.cartOpen ? 'fixed_title' : 'title_hide'}>CART</div>
                         <div className={this.state.cartOpen ? 'right_half' : 'half_hide'}>
@@ -55,7 +55,7 @@ class FixedCart extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.cart)
+    // console.log(state.cart)
     return {
         cart: state.cart
     }

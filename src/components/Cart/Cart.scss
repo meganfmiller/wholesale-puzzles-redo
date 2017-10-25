@@ -167,7 +167,7 @@
     display: flex;
 }
 
-.hide {
+.cart_hide {
     position: fixed;
     bottom: 72px;
     right: -425px;
@@ -184,7 +184,7 @@
     transition: .5s; 
 }
 
-.hide:hover {
+.cart_hide:hover {
     opacity: 1;
 }
 

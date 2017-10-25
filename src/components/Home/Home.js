@@ -8,21 +8,33 @@ import Footer from '../../components/Footer/Footer';
 import FixedCart from '../Cart/FixedCart';
 
 import { connect } from 'react-redux';
-import { get3NewPuzzles, get3SalePuzzles, get1Accessory } from './../../ducks/reducer';
+import { get3NewPuzzles, get3SalePuzzles, get1Accessory, slide } from './../../ducks/reducer';
 
 class Home extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            filterOpen: true
+        }
+    }
 
     componentDidMount() {
         this.props.get3NewPuzzles();
         this.props.get3SalePuzzles();
         this.props.get1Accessory();
+        this.props.slide(!this.state.filterOpen);
+    }
+
+    componentWillUnmount() {
+        this.props.slide(!this.state.filterOpen);
     }
 
     render() {
         return (
             <div className="Home">
                 <Header tall={true} />
-                <Nav />
+                <Nav flag={true}/>
                 <div className='main_section'>
                     <div className="new_puzzles">
                         <div className="title">
@@ -96,9 +108,10 @@ function mapStateToProps(state) {
     return {
         newHomePuzzles: state.newHomePuzzles,
         saleHomePuzzles: state.saleHomePuzzles,
-        homeAccessory: state.homeAccessory
+        homeAccessory: state.homeAccessory,
+        filterOpen: state.filterOpen
     }
 }
 
-export default connect(mapStateToProps, { get3NewPuzzles, get3SalePuzzles, get1Accessory })(Home);
+export default connect(mapStateToProps, { get3NewPuzzles, get3SalePuzzles, get1Accessory, slide })(Home);
 

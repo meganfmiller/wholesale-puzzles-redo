@@ -61,7 +61,7 @@ class Header extends Component {
 
     render(props) {
 
-        console.log(this.props.user)
+        // console.log(this.props.user)
         return (
 
             <div>
@@ -73,7 +73,7 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.cart)
+    // console.log(state.cart)
     return {
         cart: state.cart,
         user: state.user
