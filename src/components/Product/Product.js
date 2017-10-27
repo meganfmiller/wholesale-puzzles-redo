@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import { connect } from 'react-redux'
 import { getProduct, addtoCart } from './../../ducks/reducer';
 import Header from '../Header/Header';
@@ -7,6 +6,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import FixedCart from '../Cart/FixedCart';
 import './Product.css';
+import axios from 'axios';
 
 class Product extends Component {
     constructor() {
@@ -41,7 +41,16 @@ class Product extends Component {
 
     }
 
+    addItemToDB(userId, puzzleId) {
+        var item;
+        item = axios.post('/api/cart', {userId, puzzleId})
+            .then(response => {
+                return response.data
+            })
+    }
+
     render() {
+        console.log(this.props.user)
         const { img, brand, pieces, name, price, size, description, original_price } = this.props.product
         return (
             <div className="Product">
@@ -98,6 +107,7 @@ class Product extends Component {
 
                                         <button className='addtocart_btn' onClick={() => {
                                             this.props.addtoCart(this.props.product);
+                                            this.addItemToDB(this.props.user.id, this.props.product.id);
                                             this.setState({
                                                 switch: !this.state.switch
                                             })
@@ -119,7 +129,8 @@ class Product extends Component {
 function mapStateToProps(state) {
     return {
         product: state.product,
-        cart: state.cart
+        cart: state.cart,
+        user: state.user
     }
 }
 

@@ -24,8 +24,7 @@
   border: 8px double #5EAC57;
   border-radius: 8px;
   box-shadow: 2px 4px 15px #646B69;
-  padding: 20px;
-  transition: .5s; }
+  padding: 20px; }
 
 .pf_hide {
   position: absolute;
@@ -37,8 +36,7 @@
   border: 8px double #5EAC57;
   border-radius: 8px;
   box-shadow: 2px 4px 15px #646B69;
-  padding: 20px;
-  transition: .5s; }
+  padding: 20px; }
 
 .pf_title {
   color: #646B69;

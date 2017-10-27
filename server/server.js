@@ -22,6 +22,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 massive(process.env.CONNECTION_STRING).then(db => {
+    console.log(db);
     app.set('db', db);
 })
 
@@ -86,6 +87,7 @@ passport.deserializeUser(function (id, done) {
 
 
 app.get('/api/results/new', (req, res) => {
+    console.log('database', app.get('db'))
     app.get('db').getNewPuzzles()
         .then(response => {
             res.status(200).send(response)
@@ -172,10 +174,179 @@ app.get('/api/results', (req, res) => {
 
 app.get('/api/results/:item', (req, res) => {
     app.get('db').getProduct([req.params.item])
-    .then(response => {
-        // console.log(response)
-        res.status(200).send(response[0])
+        .then(response => {
+            // console.log(response)
+            res.status(200).send(response[0])
+        })
+})
+
+app.get('/api/finder', (req, res) => {
+    // console.log(req.query)
+    var { pieces, theme, brand, artist } = req.query;
+    // var keys = Object.keys(req.query);
+    // console.log(keys)
+    var params = [pieces, theme, brand, artist];
+    var newParams = [];
+    var count = 0;
+    params.map((e, i) => {
+        if (!e) {
+            count++
+            return newParams.push('')
+        } else {
+            return newParams.push(e.toUpperCase())
+        }
     })
+    
+    theme ? newParams[1] = theme.replace(theme[0], theme[0].toUpperCase()) : null
+
+    // console.log(params)
+    if (artist) {
+        var str = artist.split(' ')
+        
+            for(var i = 0; i < str.length; i++) {
+                str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);        
+            }
+        
+            var join = str.join(' ');
+            // console.log(join)
+    }
+    
+    
+    artist ? newParams[3] = artist.replace(artist, join) : null
+    
+//  console.log(theme)
+
+   
+    
+    // var filteredProperties = params.filter(e => e)
+    // var filteredKeys = keys.filter(e => e)
+    console.log(newParams)
+    count === 3 ? app.get('db').oneQuery(newParams).then(response => {
+        // console.log(response)
+        var filtered = response.filter(e => {
+            // console.log(e)
+            if (pieces) {
+                if (e.pieces === pieces) {
+                    return true
+                }
+            }
+            if (theme) {
+                if (e.theme.toLowerCase() === theme.toLowerCase()) {
+                    return true
+                }
+            }
+            if (brand) {
+                if (e.brand.toLowerCase() === brand) {
+                    return true
+                }
+            }
+            if (artist) {
+                if (e.artist.toLowerCase() === artist) {
+                    return true
+                }
+            }
+        })
+        res.status(200).send(filtered)
+})
+       
+        : count === 2 ? app.get('db').twoQueries(newParams).then(response => {
+            var filtered = response.filter(e => {
+                if (pieces) {
+                    if (e.pieces === pieces) {
+                        return true
+                    }
+                }
+                if (theme) {
+                    if (e.theme.toLowerCase() === theme) {
+                        return true
+                    }
+                }
+                if (brand) {
+                    if (e.brand.toLowerCase() === brand) {
+                        return true
+                    }
+                }
+                if (artist) {
+                    if (e.artist.toLowerCase() === artist) {
+                        return true
+                    }
+    
+    
+                }
+            })
+            res.status(200).send(filtered)
+    })
+
+    : count === 1 ? app.get('db').threeQueries(newParams).then(response => {
+        var filtered = response.filter(e => {
+            if (pieces) {
+                if (e.pieces === pieces) {
+                    return true
+                }
+            }
+            if (theme) {
+                if (e.theme.toLowerCase() === theme) {
+                    
+                    return true
+                }
+            }
+            if (brand) {
+                
+                if (e.brand.toLowerCase() === brand) {
+                    
+                    return true
+                }
+            }
+            if (artist) {
+                if (e.artist.toLowerCase() === artist) {
+                    
+                    return true
+                }
+
+
+            }
+        })
+        res.status(200).send(filtered)
+})
+        : count === 0 ? app.get('db').fourQueries(newParams).then(response => {
+            var filtered = response.filter(e => {
+                if (pieces) {
+                    if (e.pieces === pieces) {
+                        
+                        return true
+                    }
+                }
+                if (theme) {
+                    if (e.theme.toLowerCase() === theme) {
+                        
+                        return true
+                    }
+                }
+                if (brand) {
+                    if (e.brand.toLowerCase() === brand) {
+                        
+                        return true
+                    }
+                }
+                if (artist) {
+                    if (e.artist.toLowerCase() === artist) {
+                        
+                        return true
+                    }
+    
+    
+                }
+            })
+            res.status(200).send(filtered)
+    })
+            : res.status(500).send('Try Again')
+})
+
+app.post('/api/cart', (req, res) => {
+    app.get('db').addToCart([req.body.userId, req.body.puzzleId])
+        .then(response => {
+            res.status(200).send('puzzle added')
+        })
 })
 
 app.post('/api/payment', function (req, res, next) {

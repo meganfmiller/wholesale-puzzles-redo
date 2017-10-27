@@ -5,6 +5,7 @@ import './Cart.css';
 // import NewCart from './NewCart.js'
 import Footer from '../Footer/Footer';
 import trashcan from '../../images/delete.svg';
+import logo_circle from '../../images/logo_circle.png';
 
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
@@ -113,11 +114,13 @@ handleQuantityBackward() {
           </div>
           <div className='checkout_container'>
             <div className='checkout'>
-              <div className='total'>» Total: ${this.state.cartTotal}</div>
+              <div className='total'>» Total: ${this.state.cartTotal.toFixed(2)}</div>
               <StripeCheckout
                 token={this.onToken}
                 stripeKey='pk_test_gel2AzWEIutWSftyfAb0xCa3'
-                amount={this.state.cartTotal * 100}
+                amount={this.state.cartTotal.toFixed(2) * 100}
+                image={logo_circle}
+                name='Checkout'
               />
             </div>
           </div>

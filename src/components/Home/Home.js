@@ -6,6 +6,7 @@ import Header from './../Header/Header';
 import Nav from '../../components/Nav/Nav.js';
 import Footer from '../../components/Footer/Footer';
 import FixedCart from '../Cart/FixedCart';
+import hello from '../../images/hello-3.png';
 
 import { connect } from 'react-redux';
 import { get3NewPuzzles, get3SalePuzzles, get1Accessory, slide } from './../../ducks/reducer';
@@ -36,6 +37,7 @@ class Home extends Component {
                 <Header tall={true} />
                 <Nav flag={true}/>
                 <div className='main_section'>
+                    <div className='hello'><img src={hello} alt=''/></div>
                     <div className="new_puzzles">
                         <div className="title">
                             <Link to='/newresults'>NEW PUZZLES</Link>

@@ -13,6 +13,15 @@
     // overflow: scroll;
 }
 
+.hello {
+    position: absolute;
+    top: 180px;
+    left: 100px;
+    img {
+        width: 300px;
+    }
+}
+
 .new_puzzles {
     position: absolute;
     right: 80px;

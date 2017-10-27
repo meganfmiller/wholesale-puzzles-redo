@@ -10,6 +10,13 @@
   background: #E4E5E6;
   padding: 80px; }
 
+.hello {
+  position: absolute;
+  top: 180px;
+  left: 100px; }
+  .hello img {
+    width: 300px; }
+
 .new_puzzles {
   position: absolute;
   right: 80px;

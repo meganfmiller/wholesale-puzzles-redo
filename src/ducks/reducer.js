@@ -3,6 +3,7 @@ import axios from 'axios';
 const initialState = {
     user: {},
     filterOpen: false,
+    puzzleFinder: [],
     filteredPuzzles: [],
     newHomePuzzles: [],
     saleHomePuzzles: [],
@@ -26,6 +27,7 @@ const GET_ACCESSORIES = 'GET_ACCESSORIES';
 const GET_PRODUCT = 'GET_PRODUCT';
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+const SUBMIT = 'SUBMIT';
 
 
 
@@ -42,7 +44,7 @@ export function getUserInfo() {
     }
 }
 
-export function slide(flag) {    
+export function slide(flag) {
     return {
         type: SLIDE,
         payload: !flag
@@ -176,14 +178,73 @@ export function removeFromCart(product) {
     }
 }
 
+export function submit(obj) {
+    var filter = [obj].map((e) => {
+        console.log(e.brand)
+        var arr = [];
+        e.pieces ? arr.push(e.pieces) : arr.push(false);
+        e.theme ? arr.push(e.theme) : arr.push(false);
+        e.brand ? arr.push(e.brand) : arr.push(false);
+        e.artist ? arr.push(e.artist) : arr.push(false);
+        // console.log(arr);
+        return arr;
+    })
+    // console.log(filter[0])
+    var keys = Object.keys(obj)
+    // console.log(keys)
+    var baseURL = '/api/finder';
+    var acc = '';
+    var count = 0
+    filter[0].map((e, i) => {
+        
+        if (e && i === 0 && count) {
+            return acc += `&pieces=${filter[0][0]}`
+        } else if (e && i === 0) {
+            count++
+            return acc += `?pieces=${filter[0][0]}`
+        }
+        if (e && i === 1 && count) {
+            return acc += `&theme=${filter[0][1]}`
+        } else if (e && i === 1){
+            count++
+            return acc += `?theme=${filter[0][1]}`
+        }
+        if (e && i === 2 && count) {
+            return acc += `&brand=${filter[0][2]}`
+        } else if (e && i === 2){
+            count++
+            return acc += `?brand=${filter[0][2]}`
+        }
+        if (e && i === 3 && count) {
+            return acc += `&artist=${filter[0][3]}`
+        } else if (e && i === 3){
+            count++
+            return acc += `?artist=${filter[0][3]}`
+        }
+    })
+    // console.log(acc)
+    var thing = `${baseURL}${acc}`
+    // console.log(thing)
+    var submit;
+    submit = axios.get(`${baseURL}${acc}`)
+        .then(response => {
+            console.log(response.data)
+            return response.data
+        })
+    return {
+        type: SUBMIT,
+        payload: submit
+    }
+}
+
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_USER_INFO + '_FULFILLED':
-        console.log(action.payload)
+            console.log(action.payload)
             return Object.assign({}, state, { user: action.payload })
         case SLIDE:
-            return Object.assign({}, state, {filterOpen: action.payload})
+            return Object.assign({}, state, { filterOpen: action.payload })
         case GET_PUZZLES + '_FULFILLED':
             return Object.assign({}, state, { filteredPuzzles: action.payload })
         case GET_NEW_HOME_PUZZLES + '_FULFILLED':
@@ -198,7 +259,7 @@ export default function reducer(state = initialState, action) {
         case GET_HOME_ACCESSORY + '_FULFILLED':
             return Object.assign({}, state, { homeAccessory: action.payload })
         case GET_ACCESSORIES + '_FULFILLED':
-            return Object.assign({}, state, {allAccessories: action.payload})
+            return Object.assign({}, state, { allAccessories: action.payload })
         case GET_PRODUCT + '_FULFILLED':
             return Object.assign({}, state, { product: action.payload })
         case ADD_TO_CART:
@@ -208,7 +269,9 @@ export default function reducer(state = initialState, action) {
         case REMOVE_FROM_CART:
             newCart = state.cart.slice();
             newCart.splice(action.payload, 1);
-            return Object.assign({}, state, {cart: newCart});
+            return Object.assign({}, state, { cart: newCart });
+        case SUBMIT:
+            return Object.assign({}, state, { puzzleFinder: action.payload });
         default:
             return state;
     }
