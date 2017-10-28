@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getProduct, addtoCart } from './../../ducks/reducer';
+import { getProduct, addToCart } from './../../ducks/reducer';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -106,8 +106,8 @@ class Product extends Component {
                                         </div>
 
                                         <button className='addtocart_btn' onClick={() => {
-                                            this.props.addtoCart(this.props.product);
-                                            this.addItemToDB(this.props.user.id, this.props.product.id);
+                                            this.props.addToCart(this.props.user.id, this.props.product.id);
+                                            {/* this.addItemToDB(this.props.user.id, this.props.product.id); */}
                                             this.setState({
                                                 switch: !this.state.switch
                                             })
@@ -134,7 +134,7 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getProduct, addtoCart })(Product);
+export default connect(mapStateToProps, { getProduct, addToCart })(Product);
 
 
 

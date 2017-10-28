@@ -22,7 +22,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 massive(process.env.CONNECTION_STRING).then(db => {
-    console.log(db);
+    // console.log(db);
     app.set('db', db);
 })
 
@@ -345,7 +345,8 @@ app.get('/api/finder', (req, res) => {
 app.post('/api/cart', (req, res) => {
     app.get('db').addToCart([req.body.userId, req.body.puzzleId])
         .then(response => {
-            res.status(200).send('puzzle added')
+            console.log(response)
+            res.status(200).send(response)
         })
 })
 

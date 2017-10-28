@@ -163,12 +163,27 @@ export function getProduct(item) {
     }
 }
 
-export function addtoCart(product) {
-    console.log(product)
-    return {
-        type: ADD_TO_CART,
-        payload: product
-    }
+// export function addtoCart(product) {
+//     console.log(product)
+//     return {
+//         type: ADD_TO_CART,
+//         payload: product
+//     }
+// }
+
+export function addToCart(userId, puzzleId) {
+    console.log('user', userId, 'puzzle', puzzleId)
+    var item;
+    item = axios.post('/api/cart', {userId, puzzleId})
+        .then(response => {
+            console.log(response)
+            return response.data
+        })
+
+        return {
+            type: ADD_TO_CART,
+            payload: item
+        }
 }
 
 export function removeFromCart(product) {
@@ -262,12 +277,14 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { allAccessories: action.payload })
         case GET_PRODUCT + '_FULFILLED':
             return Object.assign({}, state, { product: action.payload })
-        case ADD_TO_CART:
-            var newCart = state.cart.slice();
-            newCart.push(action.payload);
-            return Object.assign({}, state, { cart: newCart });
+        // case ADD_TO_CART:
+        //     var newCart = state.cart.slice();
+        //     newCart.push(action.payload);
+        //     return Object.assign({}, state, { cart: newCart });
+        case ADD_TO_CART + '_FULFILLED':
+            return Object.assign({}, state, {cart: action.payload})
         case REMOVE_FROM_CART:
-            newCart = state.cart.slice();
+            var newCart = state.cart.slice();
             newCart.splice(action.payload, 1);
             return Object.assign({}, state, { cart: newCart });
         case SUBMIT:
