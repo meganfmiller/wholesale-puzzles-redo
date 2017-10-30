@@ -72,7 +72,7 @@ removeFromDB(puzzleId) {
     console.log('token', token);
     axios.post('/api/payment', { token, amount: 100 }).then(response => {
       this.props.checkout(this.props.user.id)
-      alert('we are in business')
+      alert('Thank you for your order!')
     });
   }
 
