@@ -50,7 +50,7 @@ class Product extends Component {
     }
 
     render() {
-        console.log(this.props.user)
+        // console.log(this.props.user)
         const { img, brand, pieces, name, price, size, description, original_price } = this.props.product
         return (
             <div className="Product">

@@ -27,6 +27,7 @@ const GET_ACCESSORIES = 'GET_ACCESSORIES';
 const GET_PRODUCT = 'GET_PRODUCT';
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+const CHECKOUT = 'CHECKOUT';
 const SUBMIT = 'SUBMIT';
 
 
@@ -35,7 +36,7 @@ export function getUserInfo() {
     // console.log('sup dude')
     const userData = axios.get('/auth/me')
         .then(response => {
-            console.log(response.data)
+            // console.log(response.data)
             return response.data
         })
     return {
@@ -172,11 +173,11 @@ export function getProduct(item) {
 // }
 
 export function addToCart(userId, puzzleId) {
-    console.log('user', userId, 'puzzle', puzzleId)
+    // console.log('user', userId, 'puzzle', puzzleId)
     var item;
     item = axios.post('/api/cart', {userId, puzzleId})
         .then(response => {
-            console.log(response)
+            // console.log(response)
             return response.data
         })
 
@@ -193,9 +194,36 @@ export function removeFromCart(product) {
     }
 }
 
+// export function removeFromCart(puzzleId) {
+//     var item;
+//     item = axios.delete(`/api/cart/${puzzleId}`)
+//         .then(response => {
+//             console.log(response.data)
+//             return response.data
+//         })
+
+//         return {
+//             type: REMOVE_FROM_CART,
+//             payload: item
+//         }
+// }
+
+export function checkout(userId) {
+    var checkout;
+    checkout = axios.delete(`/api/checkout/${userId}`)
+        .then(response => {
+            console.log(response.data)
+            return response.data
+        })
+        return {
+            type: CHECKOUT,
+            payload: checkout
+        }
+}
+
 export function submit(obj) {
     var filter = [obj].map((e) => {
-        console.log(e.brand)
+        // console.log(e.brand)
         var arr = [];
         e.pieces ? arr.push(e.pieces) : arr.push(false);
         e.theme ? arr.push(e.theme) : arr.push(false);
@@ -243,7 +271,7 @@ export function submit(obj) {
     var submit;
     submit = axios.get(`${baseURL}${acc}`)
         .then(response => {
-            console.log(response.data)
+            // console.log(response.data)
             return response.data
         })
     return {
@@ -256,7 +284,7 @@ export function submit(obj) {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_USER_INFO + '_FULFILLED':
-            console.log(action.payload)
+            // console.log(action.payload)
             return Object.assign({}, state, { user: action.payload })
         case SLIDE:
             return Object.assign({}, state, { filterOpen: action.payload })
@@ -287,6 +315,10 @@ export default function reducer(state = initialState, action) {
             var newCart = state.cart.slice();
             newCart.splice(action.payload, 1);
             return Object.assign({}, state, { cart: newCart });
+        // case REMOVE_FROM_CART + '_FULFILLED':
+        //     return Object.assign({}, state, {cart: action.payload})
+        case CHECKOUT + '_FULFILLED':
+            return Object.assign({}, state, {cart: action.payload})
         case SUBMIT:
             return Object.assign({}, state, { puzzleFinder: action.payload });
         default:

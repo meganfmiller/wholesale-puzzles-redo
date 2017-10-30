@@ -7,6 +7,7 @@ import Nav from '../../components/Nav/Nav.js';
 import Footer from '../../components/Footer/Footer';
 import FixedCart from '../Cart/FixedCart';
 import hello from '../../images/hello-3.png';
+import img1 from '../../images/summer_glow.jpg';
 
 import { connect } from 'react-redux';
 import { get3NewPuzzles, get3SalePuzzles, get1Accessory, slide } from './../../ducks/reducer';
@@ -88,14 +89,6 @@ class Home extends Component {
                             GALLERY
                         </div>
                         <div className="gallery_content">
-                            {/* {this.props.homeAccessory.map((item, i) => {
-                                return <div key={i} className='accessory-container'>
-                                    <Link to={'/resultz/' + item.id}><div><img src={item.img} alt='' /></div></Link>
-                                    <div>{item.brand}</div>
-                                    <Link to={'/resultz/' + item.id}><div className='name_style'>{item.name}</div></Link>
-                                    <div>${item.price}</div>
-                                </div>
-                            })} */}
                         </div>
                     </div>
                 </div>

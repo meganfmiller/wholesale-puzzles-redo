@@ -9,7 +9,7 @@ import logo_circle from '../../images/logo_circle.png';
 
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
-import { removeFromCart } from '../../ducks/reducer';
+import { removeFromCart, checkout } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 
 class Cart extends Component {
@@ -60,16 +60,24 @@ handleQuantityBackward() {
 
 }
 
+removeFromDB(puzzleId) {
+  axios.delete(`/api/cart${puzzleId}`)
+    .then(response => {
+      return response.data
+    })
+}
+
   onToken = (token) => {
     token.card = void 0;
     console.log('token', token);
-    axios.post('http://localhost:3535/api/payment', { token, amount: 100 }).then(response => {
+    axios.post('/api/payment', { token, amount: 100 }).then(response => {
+      this.props.checkout(this.props.user.id)
       alert('we are in business')
     });
   }
 
   render() {
-    console.log('cartTotal', this.state.cartTotal)
+    // console.log('cartTotal', this.state.cartTotal)
     return (
       <div className="Cart">
         <Header />
@@ -104,6 +112,7 @@ handleQuantityBackward() {
                   <div className='price_pos'>${item.price * this.state.quantity}</div>
                   <div className='remove_pos'><img className='trashcan' alt='' src={trashcan} onClick={() => {
                     this.props.removeFromCart(i);
+                    this.removeFromDB(item.id);
                     setTimeout(() => {
                       this.updateTotal()
                     }, 0)
@@ -136,11 +145,12 @@ function mapStateToProps(state) {
   // console.log(state)
   return {
     cart: state.cart,
-    product: state.product
+    product: state.product,
+    user: state.user
   }
 }
 
-export default connect(mapStateToProps, { removeFromCart })(Cart);
+export default connect(mapStateToProps, { removeFromCart, checkout })(Cart);
 
 
 

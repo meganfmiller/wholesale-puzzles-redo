@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
     , bodyParser = require('body-parser')
     , session = require('express-session')
@@ -7,8 +8,9 @@ const express = require('express')
     , Auth0Strategy = require('passport-auth0')
     // , config =  require('./config')
     // , stripe = require('stripe')(config.secret_key)
-    , app = module.exports = express();
-require('dotenv').config()
+    , app = module.exports = express()
+    , stripe = require('stripe')(process.env.PRIVATE_KEY);
+
 
 app.use(bodyParser.json());
 app.use(cors())
@@ -34,7 +36,7 @@ passport.use(new Auth0Strategy({
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     // db calls
     const db = app.get('db');
-    console.log(profile.identities[0].user_id)
+    // console.log(profile.identities[0].user_id)
     //this long scary chain comes from the profile, which can be accessed by setting the breakpoint below. (See comment below)
     db.findUser([profile.identities[0].user_id]).then(user => {
         if (user[0]) {
@@ -44,7 +46,7 @@ passport.use(new Auth0Strategy({
             const user = profile._json
             db.createUser([user.name, user.email, user.identities[0].user_id])
                 .then(user => {
-                    console.log(user[0].id)
+                    // console.log(user[0].id)
                     return done(null, user[0].id);
                 })
         }
@@ -63,7 +65,7 @@ app.get('/auth/me', (req, res) => {
     if (!req.user) {
         return res.status(404).send('User not found.')
     }
-    console.log(req.user)
+    // console.log(req.user)
     return res.status(200).send(req.user);
 })
 
@@ -87,7 +89,7 @@ passport.deserializeUser(function (id, done) {
 
 
 app.get('/api/results/new', (req, res) => {
-    console.log('database', app.get('db'))
+    // console.log('database', app.get('db'))
     app.get('db').getNewPuzzles()
         .then(response => {
             res.status(200).send(response)
@@ -345,12 +347,21 @@ app.get('/api/finder', (req, res) => {
 app.post('/api/cart', (req, res) => {
     app.get('db').addToCart([req.body.userId, req.body.puzzleId])
         .then(response => {
-            console.log(response)
+            // console.log(response)
             res.status(200).send(response)
         })
 })
 
-app.post('/api/payment', function (req, res, next) {
+app.delete('/api/cart:puzzleId', (req, res) => {
+    app.get('db').removeFromCart([req.params.puzzleId])
+        .then(response => {
+            // console.log(response)
+            res.status(200).send(response)
+        })
+})
+
+app.post('/api/payment', function (req, res, next) {   
+
     //convert amount to pennies
     const amountArray = req.body.amount.toString().split('');
     const pennies = [];
@@ -385,8 +396,16 @@ app.post('/api/payment', function (req, res, next) {
         //   // The card has been declined
         // }
     });
-});
+})
 
+app.delete('/api/checkout/:userId', (req, res) => {
+    app.get('db').checkout([req.params.userId])
+    .then(response => {
+        console.log(response)
+        res.status(200).send(response)
+    })
+})
+    
 
 
 
