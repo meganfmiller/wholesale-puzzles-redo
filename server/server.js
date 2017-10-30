@@ -11,7 +11,7 @@ const express = require('express')
     , app = module.exports = express()
     , stripe = require('stripe')(process.env.PRIVATE_KEY);
 
-
+app.use(express.static(`${__dirname}/../build`));
 app.use(bodyParser.json());
 app.use(cors())
 
@@ -57,7 +57,7 @@ passport.use(new Auth0Strategy({
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/',
+    successRedirect: '/#/',
     failureRedirect: '/auth'
 }))
 
@@ -71,7 +71,7 @@ app.get('/auth/me', (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.logOut();
-    res.redirect(302, 'http://localhost:3000/#/')
+    res.redirect(302, '/#/')
 })
 
 passport.serializeUser(function (id, done) {
@@ -406,7 +406,11 @@ app.delete('/api/checkout/:userId', (req, res) => {
     })
 })
     
-
+const path = require('path');
+app.get('*', (req, res)=>{
+  console.log("None Met");
+  res.sendFile(path.join(__dirname, '..','build','index.html'));
+})
 
 
 const port = 3001

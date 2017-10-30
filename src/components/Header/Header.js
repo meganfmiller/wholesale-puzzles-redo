@@ -40,7 +40,7 @@ class Header extends Component {
                 <Link to='/cart'><img className="cart" src={cart} alt='cart' /></Link>
                 <div className='cart_counter'>( {this.props.cart.length} )</div>
                 <div className="logout">
-                    {<a href='http://localhost:3001/auth/logout'><div>LOGOUT</div></a>}
+                    {<a href={process.env.REACT_APP_LOGOUT}><div>LOGOUT</div></a>}
                     <Link to='/about'><div>ABOUT</div></Link>
                     <Link to='/contact'><div>CONTACT</div></Link>
                 </div>
